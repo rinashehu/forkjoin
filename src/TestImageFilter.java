@@ -13,7 +13,7 @@ public class TestImageFilter {
 		BufferedImage image = null;
 		String srcFileName = null;
 		try {
-			//URL path = TestImageFilter.class.getResource("IMAGE1.jpg");
+
 			srcFileName = "src/IMAGE1.jpg";
 			//srcFileName = args[0]+"/IMAGE1.jpg";
 			File srcFile = new File(srcFileName);
@@ -48,7 +48,7 @@ public class TestImageFilter {
 				System.out.println("Starting "+mode+" image filter.");
 				startTime = System.currentTimeMillis();
 				ParallelFJImageFilter pF = new ParallelFJImageFilter(src, dst, 1,h,w);
-				ForkJoinPool pool = new ForkJoinPool();
+				ForkJoinPool pool = new ForkJoinPool(16);
 				pool.invoke(pF);
 				endTime = System.currentTimeMillis();
 			break;
